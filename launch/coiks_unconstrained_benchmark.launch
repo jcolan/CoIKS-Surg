@@ -1,0 +1,69 @@
+<launch>
+
+    <!-- Robot used for evaluation: [0] 6-DOF + Endoscope [1] 7-DOF + OpenRST [2] 7-DOF + Hyperedundant RST  -->
+    <param name="robot_id" value="2"/>
+
+    <!-- Options: coiks_invj, coiks_nlo, coiks_hqp, coiks_invj_nlo, 
+    coiks_invj_hqp, coiks_hqp_nlo,  coiks_all -->
+    <arg name="ik_solver" default="coiks_invj"/>
+
+    <param name="ik_solver" value="$(arg ik_solver)" type="str"/>
+
+    <param name="max_iter" value="1000"/>
+    <param name="max_time" value="0.01"/>
+    <param name="max_error" value="0.0001"/>
+    <param name="delta_integration" value="1.0"/>
+    <param name="n_random_config" value="10000"/>
+    <param name="constrained_control" value="false"/>
+    <param name="error_type" value="log6"  type="str"/>
+
+    <param name="tracik_enable" value="false"  type="bool"/>
+    <param name="kdl_enable" value="false"  type="bool"/>
+
+    <!-- Bitwise mask for printing [CODCS, TRACIK, KDL] -->
+    <param name="print_all" value="0"/>
+    <param name="solv_time_stats" value="no"  type="str"/>
+    <param name="solv_verb_level" value="0"  type="int"/>
+
+    <!-- Enables logging in CSV format -->
+    <param name="logging_enabled" value="false"  type="bool"/>
+    <param name="log_path" value="/home/colan/"  type="str"/>
+
+    <!-- INVJ Variables -->
+    <!-- Residual coefficient  -->
+    <param name="invj_Ke1" value="1.0"/>
+    <param name="invj_Ke2" value="1.0"/>
+
+    <!-- NLO Variables -->
+    <!-- Cost Coeff mu0: Position(log3)/Pose(log6) error  -->
+    <param name="nlo_mu0" value="20.0"/>
+    <!-- Cost Coeff mu1: Orientation(log3) error  -->
+    <param name="nlo_mu1" value="1.0"/>
+    <!-- Cost Coeff mu2: Joint distance  -->
+    <param name="nlo_mu2" value="0.00005"/>
+    <!-- Cost Coeff mu3: RCM error  -->
+    <param name="nlo_mu3" value="100.0"/>
+    <!-- Concurrent Mode enabled -->
+    <param name="nlo_concurrent" value="true" type="bool"/>
+    <!-- NLO Error type -->
+    <param name="nlo_error_type" value="log6"  type="str"/>
+    <!-- NLO Error type -->
+    <param name="nlo_concurrent_iterations" value="5"  type="int"/>
+    <!-- NLO Warm start -->
+    <param name="nlo_warm_start" value="yes"  type="str"/>
+
+    <!-- HQP Variables -->
+    <!-- Cost Coeff mu0: Position error  -->
+    <param name="hqp.Ke1" value="1.0"/>
+    <!-- Cost Coeff mu1: Orientation error  -->
+    <param name="hqp.Ke2" value="1.0"/>
+    <!-- Cost Coeff mu2: Joint distance  -->
+    <param name="hqp.Kd1" value="0.00001"/>
+    <!-- Cost Coeff mu3: RCM error  -->
+    <param name="hqp.Kd2" value="0.00001"/>
+    <!-- QP Warm start -->
+    <param name="hqp_warm_start" value="true"  type="bool"/>
+
+    <node name="unconstrained_benchmark" pkg="coiks" type="unconstrained_benchmark" output="screen" />
+
+</launch>

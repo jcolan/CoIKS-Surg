@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot
+  name="robot1_endoscope">
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="6.0925" />
+      <inertia
+        ixx="1"
+        ixy="-0.00"
+        ixz="0.00"
+        iyy="1"
+        iyz="0"
+        izz="1" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1.0 1.0 1.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+<!--  -->
+
+  <link
+    name="link1">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="2.8351" />
+      <inertia
+        ixx="1"
+        ixy="0"
+        ixz="0"
+        iyy="1"
+        iyz="0"
+        izz="1" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="-0.035 0 0.345"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1.0 1.0 1.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="-0.035 0 0.345"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/sldprt.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+    <axis xyz= "0.0 0.0 1.0" />
+    <limit effort="1" lower="-2.96706" upper="2.96706" velocity="3.92699081698724" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+
+<!--  -->
+
+  <link
+    name="link2">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="3.4626" />
+      <inertia
+        ixx="1"
+        ixy="0"
+        ixz="0"
+        iyy="1"
+        iyz="0"
+        izz="1" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1.0 1.0 1.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_2" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.345" />
+    <axis xyz= "0.0 1.0 0.0" />
+    <limit effort="1" lower="-2.094395" upper="2.094395" velocity="2.61799387799149" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+
+<!--  -->
+
+  <link
+    name="link3">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.492" />
+      <inertia
+        ixx="1"
+        ixy="0"
+        ixz="0"
+        iyy="1"
+        iyz="0"
+        izz="1" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1.0 1.0 1.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_3" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.25" />
+    <axis xyz= "0.0 1.0 0.0" />
+    <limit effort="1" lower="-2.181662" upper="2.70526" velocity="2.85832571599111" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+
+<!--  -->
+
+  <link
+    name="link4">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.98124" />
+      <inertia
+        ixx="1"
+        ixy="0"
+        ixz="0"
+        iyy="1"
+        iyz="0"
+        izz="1" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.850"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1.0 1.0 1.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.850"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_4" type="revolute">
+    <parent link="link3"/>
+    <child link="link4"/>
+    <origin rpy="0.0 0.0 0.0" xyz="-0.01 0.0 -0.595" />
+    <axis xyz= "0.0 0.0 1.0" />
+    <limit effort="1" lower="-4.712389" upper="4.712389" velocity="3.92699081698724" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+
+<!--  -->
+
+  <link
+    name="link5">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.41203" />
+      <inertia
+        ixx="1"
+        ixy="0"
+        ixz="0"
+        iyy="1"
+        iyz="0"
+        izz="1" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.4 0.4 0.4 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_5" type="revolute">
+    <parent link="link4"/>
+    <child link="link5"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.85" />
+    <axis xyz= "0.0 1.0 0.0" />
+    <limit effort="1" lower="-2.094395" upper="2.094395" velocity="3.02168853397778" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+
+
+<!--  -->
+
+
+  <link
+    name="link_holder">
+    <inertial>
+      <origin
+        xyz="3.49783977893203E-08 -3.37621445800629E-08 0.0268883468061592"
+        rpy="0 0 0" />
+      <mass
+        value="0.0621451294050963" />
+      <inertia
+        ixx="2.14125874215397E-05"
+        ixy="4.16933040161295E-12"
+        ixz="-4.28204868776305E-11"
+        iyy="2.15154586990406E-05"
+        iyz="4.09145473940868E-11"
+        izz="1.16060587387292E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link_holder.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link_holder.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="joint_6" type="revolute">
+    <parent link="link5"/>
+    <child link="link_holder"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.07" />
+    <axis xyz= "0.0 0.0 1.0" />
+    <limit effort="1" lower="-6.283185" upper="6.283185" velocity="6.28318530717959" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+
+  <link
+    name="link_endoscope">
+    <inertial>
+      <origin
+        xyz="0 5.55111512312578E-17 -0.0746151269651332"
+        rpy="0 0 0" />
+      <mass
+        value="0.168716382948223" />
+      <inertia
+        ixx="0.000475265212994558"
+        ixy="-2.11840896530536E-37"
+        ixz="1.75986733544522E-39"
+        iyy="0.000475265212994558"
+        iyz="-1.07560315691251E-21"
+        izz="4.70674864606606E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link_endoscope.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link_endoscope.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_endoscope"
+    type="fixed">
+    <origin
+      xyz="0 0 0.03"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="link_holder" />
+    <child
+      link="link_endoscope" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="link_ee">
+    <inertial>
+      <origin
+        xyz="0 -5.55111512312578E-17 0.000467294607102273"
+        rpy="0 0 0" />
+      <mass
+        value="6.4320419402891E-06" />
+      <inertia
+        ixx="3.84821063408736E-12"
+        ixy="4.46891609255166E-45"
+        ixz="-7.62181110865453E-45"
+        iyy="3.84821063408736E-12"
+        iyz="2.15161484914343E-30"
+        izz="6.68903771781698E-12" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link_tip.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot1_endoscope/meshes/link_tip.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_tip"
+    type="fixed">
+    <origin
+      xyz="0 0 0.3"
+      rpy="0 0 0" />
+    <parent
+      link="link_endoscope" />
+    <child
+      link="link_ee" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

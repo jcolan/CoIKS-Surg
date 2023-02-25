@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="robot3_hyperrst" version="1.0">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.000648 -0.000166 0.084487" rpy="0 0 0" />
+      <mass value="1.697" />
+      <inertia ixx="0.004622" ixy="9E-06" ixz="6E-05" iyy="0.004495" iyz="9E-06" izz="0.002079" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.3 0.3 0.75 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="shoulder_link">
+    <inertial>
+      <origin xyz="-2.3E-05 -0.010364 -0.07336" rpy="0 0 0" />
+      <mass value="1.3773" />
+      <inertia ixx="0.00457" ixy="1E-06" ixz="2E-06" iyy="0.004831" iyz="0.000448" izz="0.001409" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/shoulder_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1.0 1.0 1.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/shoulder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_1" type="revolute">
+    <origin xyz="0 0 0.15643" rpy="3.1416 2.7629E-18 -4.9305E-36" />
+    <parent link="base_link" />
+    <child link="shoulder_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-12.566370" upper="12.566370" effort="39" velocity="0.8727" />
+  </joint>
+  <link name="half_arm_1_link">
+    <inertial>
+      <origin xyz="-4.4E-05 -0.09958 -0.013278" rpy="0 0 0" />
+      <mass value="1.1636" />
+      <inertia ixx="0.011088" ixy="5E-06" ixz="0" iyy="0.001072" iyz="-0.000691" izz="0.011255" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/half_arm_1_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1.0 1.0 1.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/half_arm_1_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_2" type="revolute">
+    <origin xyz="0 0.005375 -0.12838" rpy="1.5708 2.1343E-17 -1.1102E-16" />
+    <parent link="shoulder_link" />
+    <child link="half_arm_1_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.41" upper="2.41" effort="39" velocity="0.8727" />
+  </joint>
+  <link name="half_arm_2_link">
+    <inertial>
+      <origin xyz="-4.4E-05 -0.006641 -0.117892" rpy="0 0 0" />
+      <mass value="1.1636" />
+      <inertia ixx="0.010932" ixy="0" ixz="-7E-06" iyy="0.011127" iyz="0.000606" izz="0.001043" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/half_arm_2_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1.0 1.0 1.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/half_arm_2_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_3" type="revolute">
+    <origin xyz="0 -0.21038 -0.006375" rpy="-1.5708 1.2326E-32 -2.9122E-16" />
+    <parent link="half_arm_1_link" />
+    <child link="half_arm_2_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-12.566370" upper="12.566370" effort="39" velocity="0.8727" />
+  </joint>
+  <link name="forearm_link">
+    <inertial>
+      <origin xyz="-1.8E-05 -0.075478 -0.015006" rpy="0 0 0" />
+      <mass value="0.9302" />
+      <inertia ixx="0.008147" ixy="-1E-06" ixz="0" iyy="0.000631" iyz="-0.0005" izz="0.008316" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/forearm_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1.0 1.0 1.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/forearm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_4" type="revolute">
+    <origin xyz="0 0.006375 -0.21038" rpy="1.5708 -6.6954E-17 -1.6653E-16" />
+    <parent link="half_arm_2_link" />
+    <child link="forearm_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.66" upper="2.66" effort="39" velocity="0.8727" />
+  </joint>
+  <link name="spherical_wrist_1_link">
+    <inertial>
+      <origin xyz="1E-06 -0.009432 -0.063883" rpy="0 0 0" />
+      <mass value="0.6781" />
+      <inertia ixx="0.001596" ixy="0" ixz="0" iyy="0.001607" iyz="0.000256" izz="0.000399" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/spherical_wrist_1_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1.0 1.0 1.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/spherical_wrist_1_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_5" type="revolute">
+    <origin xyz="0 -0.20843 -0.006375" rpy="-1.5708 2.2204E-16 -6.373E-17" />
+    <parent link="forearm_link" />
+    <child link="spherical_wrist_1_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-12.566370" upper="12.566370" effort="9" velocity="0.8727" />
+  </joint>
+  <link name="spherical_wrist_2_link">
+    <inertial>
+      <origin xyz="1E-06 -0.045483 -0.00965" rpy="0 0 0" />
+      <mass value="0.6781" />
+      <inertia ixx="0.001641" ixy="0" ixz="0" iyy="0.00041" iyz="-0.000278" izz="0.001641" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/spherical_wrist_2_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1.0 1.0 1.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/spherical_wrist_2_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_6" type="revolute">
+    <origin xyz="0 0.00017505 -0.10593" rpy="1.5708 9.2076E-28 -8.2157E-15" />
+    <parent link="spherical_wrist_1_link" />
+    <child link="spherical_wrist_2_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.23" upper="2.23" effort="9" velocity="0.8727" />
+  </joint>
+  <link name="bracelet_link">
+    <inertial>
+      <origin xyz="-0.000281 -0.011402 -0.029798" rpy="0 0 0" />
+      <mass value="0.5006" />
+      <inertia ixx="0.000587" ixy="3E-06" ixz="3E-06" iyy="0.000369" iyz="0.000118" izz="0.000609" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/bracelet_no_vision_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1.0 1.0 1.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot3_hyperrst/meshes/bracelet_no_vision_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_7" type="revolute">
+    <origin xyz="0 -0.10593 -0.00017505" rpy="-1.5708 -5.5511E-17 9.6396E-17" />
+    <parent link="spherical_wrist_2_link" />
+    <child link="bracelet_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-12.566370" upper="12.566370" effort="9" velocity="0.8727" />
+  </joint>
+
+  <link
+    name="forceps_base_link">
+    <inertial>
+      <origin
+        xyz="-0.00711472480592024 -0.000702382692643078 0.0358708633581944"
+        rpy="0 0 0" />
+      <mass
+        value="0.426956657963786" />
+      <inertia
+        ixx="0.000339659094024397"
+        ixy="1.77291111336564E-06"
+        ixz="-2.56214498057833E-07"
+        iyy="0.000227034867318539"
+        iyz="-4.5078899324413E-06"
+        izz="0.000360133333803079" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Multidof_forceps/meshes/forceps_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color rgba="0.9 1.0 1.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Multidof_forceps/meshes/forceps_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_robot_ee" type="fixed">
+    <origin xyz="0 0 -0.0615250000000001" rpy="-3.14159265358979 0.0 0.0" />
+    <parent link="bracelet_link" />
+    <child link="forceps_base_link" />
+    <axis xyz="0 0 1" />
+  </joint>
+
+
+  <link
+    name="interface_link">
+    <inertial>
+      <origin
+        xyz="5.0766210564791E-07 3.77098366680225E-07 0.146417200922409"
+        rpy="0 0 0" />
+      <mass
+        value="0.00259190265459844" />
+      <inertia
+        ixx="1.63503986014447E-05"
+        ixy="6.8874591037039E-12"
+        ixz="-7.3836735077738E-12"
+        iyy="1.6350701698115E-05"
+        iyz="-4.95581457832937E-12"
+        izz="3.56019196292068E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Multidof_forceps/meshes/interface_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.894117647058823 0.894117647058823 0.894117647058823 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Multidof_forceps/meshes/interface_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_interface"
+    type="fixed">
+    <origin
+      xyz="-0.000894132521115185 -0.000159164992458841 0.133499999999999"
+      rpy="0 0 1.5707963267949" />
+    <parent
+      link="forceps_base_link" />
+    <child
+      link="interface_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="pitch_link_1">
+    <inertial>
+      <origin
+        xyz="1.44691855915322E-08 -0.00400982010205925 -0.000159177100946437"
+        rpy="0 0 0" />
+      <mass
+        value="0.000195876150263494" />
+      <inertia
+        ixx="2.94742845695694E-09"
+        ixy="1.88286901365166E-14"
+        ixz="-1.05706448143172E-14"
+        iyy="8.52560661553048E-10"
+        iyz="-1.90300521533365E-14"
+        izz="2.96803731494454E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Multidof_forceps/meshes/pitch_link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 1 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Multidof_forceps/meshes/pitch_link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_pitch_1"
+    type="revolute">
+    <origin
+      xyz="0.000159164992458841 0 0.28"
+      rpy="-1.5707963267949 0 -1.5707963267949" />
+    <parent
+      link="interface_link" />
+    <child
+      link="pitch_link_1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.570796"
+      upper="1.570796"
+      effort="1"
+      velocity="5.2" />
+  </joint>
+  <link
+    name="pitch_link_2">
+    <inertial>
+      <origin
+        xyz="-1.44691855685471E-08 -0.00400982010205925 -0.000159152883971267"
+        rpy="0 0 0" />
+      <mass
+        value="0.000195876150263495" />
+      <inertia
+        ixx="2.94742845695695E-09"
+        ixy="-1.88286901332485E-14"
+        ixz="-1.05706448156477E-14"
+        iyy="8.52560661553053E-10"
+        iyz="1.90300521560157E-14"
+        izz="2.96803731494455E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Multidof_forceps/meshes/pitch_link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 1 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Multidof_forceps/meshes/pitch_link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_pitch_2"
+    type="revolute">
+    <origin
+      xyz="0 -0.00800000000000001 0"
+      rpy="0 0 0" />
+    <parent
+      link="pitch_link_1" />
+    <child
+      link="pitch_link_2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.570796"
+      upper="1.570796"
+      effort="1"
+      velocity="5.2" />
+  </joint>
+  <link
+    name="pitch_link_3">
+    <inertial>
+      <origin
+        xyz="-4.05131411701607E-05 -0.0057885772880954 -1.69286095611619E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.000303739598398012" />
+      <inertia
+        ixx="3.85009189497848E-09"
+        ixy="7.35865137314613E-12"
+        ixz="-8.50585202720227E-12"
+        iyy="2.25810844298135E-09"
+        iyz="1.20473966835985E-12"
+        izz="4.72321848132118E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Multidof_forceps/meshes/pitch_link_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 1 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Multidof_forceps/meshes/pitch_link_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_pitch_3"
+    type="revolute">
+    <origin
+      xyz="0 -0.00799999999999995 -0.000159164992458867"
+      rpy="0 0 0" />
+    <parent
+      link="pitch_link_2" />
+    <child
+      link="pitch_link_3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.570796"
+      upper="1.570796"
+      effort="1"
+      velocity="5.2" />
+  </joint>
+  <link
+    name="finger_left_link">
+    <inertial>
+      <origin
+        xyz="-0.00135260529043862 -0.00877868533987547 -0.000318645784807719"
+        rpy="0 0 0" />
+      <mass
+        value="0.000291447495481756" />
+      <inertia
+        ixx="1.09667440993645E-08"
+        ixy="-6.84062461520854E-10"
+        ixz="7.85359981929611E-11"
+        iyy="1.38034467733582E-09"
+        iyz="6.01438685605144E-10"
+        izz="1.0555952238581E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Multidof_forceps/meshes/finger_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.250980392156863 0.12156862745098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Multidof_forceps/meshes/finger_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_finger_left"
+    type="revolute">
+    <origin
+      xyz="0 -0.0115 0"
+      rpy="0 -1.5707963267949 0" />
+    <parent
+      link="pitch_link_3" />
+    <child
+      link="finger_left_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.570796"
+      upper="1.570796"
+      effort="1"
+      velocity="5.2" />
+  </joint>
+  <link name="link_ee" />
+  <joint name="joint_ee" type="fixed">
+    <origin xyz="0 -0.015 0.0" rpy="0.0 0.0 0.0" />
+    <parent link="finger_left_link" />
+    <child link="link_ee" />
+    <axis xyz="0 0 0" />
+  </joint>
+</robot>

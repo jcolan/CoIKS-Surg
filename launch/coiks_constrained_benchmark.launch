@@ -1,0 +1,78 @@
+<launch>
+
+    <!-- Robot used for evaluation: [0] 6-DOF + Endoscope [1] 7-DOF + OpenRST [2] 7-DOF + Hyperedundant RST  -->
+    <param name="robot_id" value="2"/>
+
+    <!-- Options: coiks_invj, coiks_nlo, coiks_hqp, coiks_invj_nlo, 
+    coiks_invj_hqp, coiks_invj_hqp,  coiks_all -->
+    <arg name="ik_solver" default="coiks_nlo"/>
+    <param name="ik_solver" value="$(arg ik_solver)" type="str"/>
+
+    <!-- Target path parameters -->
+    <!-- Options: c3d (4D Circumference, for Robot0), c6d (6D Circumference) -->
+    <param name="path_type" value="c6d "/> 
+    <!-- Options: Path radius (m) -->
+    <param name="path_param_1" value="0.015"/>
+    <!-- Options: Path orientation [0] (For robot_id=0) [1] (For robot_id=1)  [3] (For robot_id=2) -->
+    <param name="path_param_2" value="3"/>
+    <!-- Options; Trajectory steps -->
+    <param name="n_points" value="100"/>
+    
+    <param name="max_iter" value="10000"/>
+    <param name="max_time" value="0.01"/>
+    <param name="delta_integration" value="1.0"/>
+    <param name="max_error" value="0.0001"/>
+    <param name="rcm_error_max" value="0.0001"/>
+    <!-- Error type. For robot_id=0 chose log3, for the others log6-->
+    <param name="error_type" value="log6"  type="str"/>
+    <param name="constrained_control" value="true"/>
+
+    <!-- Bitwise mask for printing [CODCS, TRACIK, KDL] -->
+    <param name="print_all" value="0"/>
+    <param name="solv_time_stats" value="no"  type="str"/>
+    <param name="solv_verb_level" value="0"  type="int"/>
+
+    <!-- Enables logging in CSV format -->
+    <param name="logging_enabled" value="true"  type="bool"/>
+    <param name="log_path" value="/home/colan/"  type="str"/>
+
+    <!-- INVJ Variables -->
+    <!-- Residual coefficient RCM -->
+    <param name="invj_Ke1" value="1.0"/>
+    <!-- Residual coefficient EE -->
+    <param name="invj_Ke2" value="1.0"/>
+
+    <!-- NLO Variables -->
+    <!-- Cost Coeff mu0: Position(log3)\Pose error  -->
+    <param name="nlo_mu0" value="20.0"/>
+    <!-- Cost Coeff mu1: Orientation(log3) error  -->
+    <param name="nlo_mu1" value="1.0"/>
+    <!-- Cost Coeff mu2: Joint distance  -->
+    <param name="nlo_mu2" value="0.00005"/>
+    <!-- Cost Coeff mu3: RCM error  -->
+    <param name="nlo_mu3" value="100.0"/>
+    <!-- Concurrent Mode enabled -->
+    <param name="nlo_concurrent" value="true" type="bool"/>
+    <!-- NLO Error type. For robot_id=0 chose log3, for the others log6-->
+    <param name="nlo_error_type" value="log6"  type="str"/>
+    <!-- NLO Concurrent enable -->
+    <param name="nlo_concurrent_iterations" value="5"  type="int"/>
+    <!-- NLO Warm start -->
+    <param name="nlo_warm_start" value="yes"  type="str"/>
+
+    <!-- HQP Variables -->
+    <!-- Residual coefficient RCM   -->
+    <param name="hqp_Ke1" value="1.0"/>
+    <!-- Residual coefficient EE  -->
+    <param name="hqp_Ke2" value="1.0"/>
+    <!-- Coeff Joint distance (RCM task)  -->
+    <param name="hqp_Kd1" value="0.00001"/>
+    <!-- Coeff Joint distance (EE task)  -->
+    <param name="hqp_Kd2" value="0.00001"/>
+    <!-- QP Warm start -->
+    <param name="hqp_warm_start" value="true"  type="bool"/>
+
+
+    <node name="constrained_benchmark" pkg="coiks" type="constrained_benchmark" output="screen" />
+
+</launch>
